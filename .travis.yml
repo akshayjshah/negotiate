@@ -1,0 +1,12 @@
+language: go
+sudo: false
+matrix:
+  include:
+    - go: "1.9.5"
+      env: SKIP_LINT=1
+    - go: "1.10.1"
+script:
+  - make lint
+  - make test
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
