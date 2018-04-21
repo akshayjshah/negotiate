@@ -33,3 +33,6 @@ endif
 .PHONY: test
 test: ## Run unit tests
 	go test -v -race -cover -coverprofile=cover.out .
+
+bench: ## Run benchmarks
+	go test -v -bench . -run "^$$" -benchmem .

@@ -62,3 +62,11 @@ func TestErrors(t *testing.T) {
 		})
 	}
 }
+
+func Benchmark(b *testing.B) {
+	r := fake("text/html, text/plain;q=0.9, text/*;q=0.8, */*;q=0.2")
+	offers := []string{"text/html", "text/plain", "application/json"}
+	for n := 0; n < b.N; n++ {
+		ContentType(r, offers)
+	}
+}
