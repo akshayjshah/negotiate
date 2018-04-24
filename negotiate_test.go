@@ -5,8 +5,6 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func fake(accept string) *http.Request {
@@ -62,7 +60,9 @@ func TestErrors(t *testing.T) {
 			if got := err.Error(); got != tt.expect {
 				t.Fatalf("error mismatch: got %s, expected %s", got, tt.expect)
 			}
-			assert.Equal(t, tt.isNoMatch, IsNoMatch(err))
+			if tt.isNoMatch != IsNoMatch(err) {
+				t.Fatalf("expected IsNoErr to be %v", tt.isNoMatch)
+			}
 		})
 	}
 }
