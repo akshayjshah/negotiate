@@ -5,6 +5,8 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func fake(accept string) *http.Request {
@@ -39,16 +41,17 @@ func Test(t *testing.T) {
 
 func TestErrors(t *testing.T) {
 	tests := []struct {
-		desc   string
-		accept string
-		offers []string
-		expect string
+		desc      string
+		accept    string
+		offers    []string
+		expect    string
+		isNoMatch bool
 	}{
-		{"spaces in offer", "*/*", []string{"text/plain "}, "invalid offer: text/plain "},
-		{"trailing slash", "*/*/", []string{"text/plain/"}, "invalid offer: text/plain/"},
-		{"no subtype", "*/*", []string{"text"}, "imprecise offer: text"},
-		{"imprecise offer", "*/*", []string{"text/*"}, "imprecise offer: text/*"},
-		{"no match", "text/*", []string{"application/json"}, "no matching offer"},
+		{"spaces in offer", "*/*", []string{"text/plain "}, "invalid offer: text/plain ", false},
+		{"trailing slash", "*/*/", []string{"text/plain/"}, "invalid offer: text/plain/", false},
+		{"no subtype", "*/*", []string{"text"}, "imprecise offer: text", false},
+		{"imprecise offer", "*/*", []string{"text/*"}, "imprecise offer: text/*", false},
+		{"no match", "text/*", []string{"application/json"}, "no matching offer", true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {
@@ -59,6 +62,7 @@ func TestErrors(t *testing.T) {
 			if got := err.Error(); got != tt.expect {
 				t.Fatalf("error mismatch: got %s, expected %s", got, tt.expect)
 			}
+			assert.Equal(t, tt.isNoMatch, IsNoMatch(err))
 		})
 	}
 }

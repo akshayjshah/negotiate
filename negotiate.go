@@ -17,11 +17,17 @@ const fakeType = "not/real"
 
 var errNoMatch = errors.New("no matching offer")
 
+// IsNoMatch checks whether an error indicates that no matching offers were
+// found.
+func IsNoMatch(err error) bool {
+	return err == errNoMatch
+}
+
 // ContentType returns the best offered content type for the request's Accept
 // header. Offers must include both a MIME type and subtype, e.g. text/plain
 // or image/png. If two offers match with equal weight and specificity, then
-// the offer earlier in the list is preferred. If no offers match, an error is
-// returned.
+// the offer earlier in the list is preferred. If no offers match or any of
+// the offers were invalid, an error is returned.
 func ContentType(r *http.Request, offers []string) (string, error) {
 	for _, o := range offers {
 		if err := checkOffer(o); err != nil {
