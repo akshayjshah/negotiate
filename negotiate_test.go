@@ -22,6 +22,8 @@ func Test(t *testing.T) {
 	}{
 		{"exact match", "application/json", "application/json"},
 		{"prefer earlier", "text/*", "text/plain"},
+		{"accept anything", "*/*", "text/plain"},
+		{"empty accept", "", "text/plain"},
 		{"honor weights", "text/html, text/plain;q=0.9, */*;q=0.8", "text/html"},
 	}
 	for _, tt := range tests {

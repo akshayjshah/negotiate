@@ -13,7 +13,10 @@ import (
 	"github.com/golang/gddo/httputil"
 )
 
-const fakeType = "not/real"
+const (
+	fakeType = "not/real"
+	accept   = "Accept"
+)
 
 var errNoMatch = errors.New("no matching offer")
 
@@ -33,6 +36,9 @@ func ContentType(r *http.Request, offers []string) (string, error) {
 		if err := checkOffer(o); err != nil {
 			return "", err
 		}
+	}
+	if r.Header.Get(accept) == "" {
+		r.Header.Set(accept, "*/*")
 	}
 	if t := httputil.NegotiateContentType(r, offers, fakeType); t != fakeType {
 		return t, nil
