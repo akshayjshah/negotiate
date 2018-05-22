@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/golang/gddo/httputil"
+	"github.com/akshayjshah/negotiate/internal/httputil"
 )
 
 const (

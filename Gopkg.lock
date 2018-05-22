@@ -2,14 +2,6 @@
 
 
 [[projects]]
-  name = "github.com/golang/gddo"
-  packages = [
-    "httputil",
-    "httputil/header"
-  ]
-  revision = "416d5fc8c9c85e9ec9252a70d01e069f4b287ff0"
-
-[[projects]]
   branch = "master"
   name = "github.com/golang/lint"
   packages = ["golint"]
@@ -71,6 +63,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "635c49c8576bc6332bd026d9d82f285f7b21e3f34c9acb53363ec680d01e4c02"
+  inputs-digest = "a36f6948ee7c201d2d6bf1b0984a4afa516c75ae6b5c53fa6843134b3c53861d"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -42,10 +42,6 @@ required = [
   branch = "master"
   name = "honnef.co/go/tools"
 
-[[constraint]]
-  revision = "416d5fc8c9c85e9ec9252a70d01e069f4b287ff0"
-  name = "github.com/golang/gddo"
-
 [prune]
   go-tests = true
   unused-packages = true
