@@ -30,15 +30,15 @@ required = [
     "honnef.co/go/tools/cmd/megacheck",
 ]
 
-[[constraint]]
+[[override]]
   branch = "master"
   name = "github.com/golang/lint"
 
-[[constraint]]
+[[override]]
   branch = "master"
   name = "golang.org/x/tools"
 
-[[constraint]]
+[[override]]
   branch = "master"
   name = "honnef.co/go/tools"
 

@@ -13,7 +13,7 @@
   branch = "master"
   name = "github.com/golang/lint"
   packages = ["golint"]
-  revision = "85993ffd0a6cd043291f3f63d45d656d97b165bd"
+  revision = "470b6b0bb3005eda157f0275e2e4895055396a81"
 
 [[projects]]
   name = "github.com/kisielk/gotool"
@@ -28,7 +28,7 @@
   branch = "master"
   name = "golang.org/x/lint"
   packages = ["."]
-  revision = "85993ffd0a6cd043291f3f63d45d656d97b165bd"
+  revision = "470b6b0bb3005eda157f0275e2e4895055396a81"
 
 [[projects]]
   branch = "master"
@@ -44,7 +44,7 @@
     "imports",
     "internal/fastwalk"
   ]
-  revision = "94b14834a20132093826ea5e2da5502a13908ad3"
+  revision = "28aef64757f4d432485ab970b094e1af8b301e84"
 
 [[projects]]
   branch = "master"
@@ -71,6 +71,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "38215358e6bfe9af8b6085615bb1c732143b9e27d939bbd6b14f0c9996b68b46"
+  inputs-digest = "635c49c8576bc6332bd026d9d82f285f7b21e3f34c9acb53363ec680d01e4c02"
   solver-name = "gps-cdcl"
   solver-version = 1
